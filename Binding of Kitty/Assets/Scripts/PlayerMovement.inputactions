@@ -7,12 +7,12 @@
             "actions": [
                 {
                     "name": "PlayerMovement",
-                    "type": "PassThrough",
+                    "type": "Value",
                     "id": "d52f03e2-5be2-4b3b-b4eb-6f853dd7345b",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
