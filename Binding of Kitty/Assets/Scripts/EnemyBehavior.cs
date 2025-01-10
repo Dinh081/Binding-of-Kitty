@@ -16,7 +16,7 @@ public class EnemyBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        _UI.UpdateEnemyHealth(GetHealth());
     }
     public void DecreaseHealth(int amount)
     {

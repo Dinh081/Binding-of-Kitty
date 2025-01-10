@@ -6,8 +6,7 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] private float _uptime = 3f;
     private Rigidbody2D _rb;
-    [SerializeField] private int _enemyHealth = 3;
-    [SerializeField] private UIUpdater _UI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,9 +28,6 @@ public class Projectile : MonoBehaviour
             if (enemy != null)
             {
                 enemy.DecreaseHealth(1);  // Decrease health by 1 (adjust as needed)
-
-                // Update the health UI (make sure _UI.UpdateHealth() is implemented correctly)
-                _UI.UpdateHealth(enemy.GetHealth());
 
                 // Destroy the enemy if health reaches 0
                 if (enemy.GetHealth() <= 0)

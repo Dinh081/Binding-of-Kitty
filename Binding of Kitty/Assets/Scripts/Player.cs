@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _UI.UpdateHealth(_health);
         
     }
 
@@ -83,7 +84,7 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
-            if (_health <= 0)
+            if (_health < 2)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
