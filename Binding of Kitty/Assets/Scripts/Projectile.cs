@@ -33,7 +33,7 @@ public class Projectile : MonoBehaviour
                 // --Destroy the enemy if health reaches 0-- instead load scene again <hier ColliderBox ausschalten, damit man in den neuen Raum kann (angenommen es gibt nur einen Gegner pro Raum)>
                 if (enemy.GetHealth() <= 0)
                 {
-
+                    Destroy(collision.gameObject);
                     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
                 }
