@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Projectile : MonoBehaviour
 {
@@ -29,10 +30,12 @@ public class Projectile : MonoBehaviour
             {
                 enemy.DecreaseHealth(1);  // Decrease health by 1 (adjust as needed)
 
-                // Destroy the enemy if health reaches 0
+                // --Destroy the enemy if health reaches 0-- instead load scene again <hier ColliderBox ausschalten, damit man in den neuen Raum kann (angenommen es gibt nur einen Gegner pro Raum)>
                 if (enemy.GetHealth() <= 0)
                 {
-                    Destroy(collision.gameObject);  // Destroy the enemy
+
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
                 }
             }
 

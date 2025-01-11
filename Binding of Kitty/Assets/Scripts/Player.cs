@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
         {
             ShootProjectile(_lastDirection);
         }
+        _UI.UpdateHealth(_health);
 
     }
 
