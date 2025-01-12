@@ -17,6 +17,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private int _health;
     [SerializeField] private UIUpdater _UI;
+
+    public EnemyBehavior enemyBehavior;
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -89,10 +92,27 @@ public class Player : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
             else
-            {
+            {   
                 _health--;
                 _UI.UpdateHealth(_health);
 
+                enemyBehavior.KBCounter = enemyBehavior.KBTotalTime;
+                if (collision.transform.position.x <= transform.position.x)  // enemy is on the left - hit from the right
+                {
+                    enemyBehavior.KnockFromRight = true;
+                }
+                if (collision.transform.position.x >= transform.position.x)  // enemy is on the right - hit from the left
+                {
+                    enemyBehavior.KnockFromRight = false;
+                }
+                if (collision.transform.position.y <= transform.position.y)  // enemy is down - hit from the top
+                {
+                    enemyBehavior.KnockFromUp = true;
+                }
+                if (collision.transform.position.y >= transform.position.y)  // enemy is up - hit from the bottom
+                {
+                    enemyBehavior.KnockFromUp = false;
+                }
             }
     }
 

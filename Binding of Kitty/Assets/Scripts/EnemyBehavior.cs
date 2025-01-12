@@ -5,12 +5,20 @@ using UnityEngine;
 public class EnemyBehavior : MonoBehaviour
 {
     [SerializeField] private int _enemyHealth;
+    [SerializeField] private int _maxEnemyHealth = 5;
     [SerializeField] private UIUpdater _UI;
     private Rigidbody2D _rb;
 
     [SerializeField] private float _enemySpeed;
     public Transform _target;
     private Vector2 _moveDirection;
+
+    public float KBForce; // controlls how hard enemy knocks back 
+    public float KBCounter; // counts how long the knockback lasts
+    public float KBTotalTime; // the total time of the whole knockback effect
+
+    public bool KnockFromRight;
+    public bool KnockFromUp;
 
     private void Awake()
     {
@@ -19,6 +27,7 @@ public class EnemyBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _enemyHealth = _maxEnemyHealth;
         _UI.UpdateEnemyHealth(GetHealth());
     }
     public void DecreaseHealth(int amount)
@@ -43,10 +52,34 @@ public class EnemyBehavior : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_target)
+        if (_target && KBCounter <= 0)   // enemy can move only of there is a player and when knockback effect ends
         {
             _rb.velocity = new Vector2(_moveDirection.x, _moveDirection.y) * _enemySpeed;
         }
+        else if (KBCounter > 0)
+        {
+            if (KnockFromRight)   // direction of knockback
+            {
+                _rb.velocity = new Vector2(-KBForce, KBForce);
+            }
+            if (KnockFromRight is false)
+            {
+                _rb.velocity = new Vector2(KBForce, KBForce);
+            }
+            if (KnockFromUp)
+            {
+                _rb.velocity = new Vector2(KBForce, -KBForce);
+            }
+            if (KnockFromUp is false)
+            {
+                _rb.velocity = new Vector2(KBForce, KBForce);
+            }
 
+            KBCounter -= Time.deltaTime;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
     }
 }

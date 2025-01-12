@@ -404,7 +404,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyHealth: 6
+  _maxEnemyHealth: 5
   _UI: {fileID: 772565487}
+  _enemySpeed: 0
+  _target: {fileID: 0}
+  KBForce: 0
+  KBCounter: 0
+  KBTotalTime: 0
+  KnockFromRight: 0
+  KnockFromUp: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,6 +699,7 @@ MonoBehaviour:
   _speed: 4
   _health: 6
   _UI: {fileID: 772565487}
+  enemyBehavior: {fileID: 7908621100319630436}
 --- !u!4 &1194808988 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6671316480759290078, guid: 93a6544922aa79a4cb1bc561dc9e2230, type: 3}
@@ -842,7 +851,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyHealth: 2
+  _maxEnemyHealth: 5
   _UI: {fileID: 772565487}
+  _enemySpeed: 3
+  _target: {fileID: 1194808988}
+  KBForce: 3
+  KBCounter: 0
+  KBTotalTime: 0.2
+  KnockFromRight: 0
+  KnockFromUp: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
