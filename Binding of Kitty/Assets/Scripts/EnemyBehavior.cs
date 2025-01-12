@@ -8,6 +8,9 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] private UIUpdater _UI;
     private Rigidbody2D _rb;
 
+    [SerializeField] private float _enemySpeed;
+    public Transform _target;
+    private Vector2 _moveDirection;
 
     private void Awake()
     {
@@ -31,6 +34,19 @@ public class EnemyBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_target)
+        {
+            Vector3 direction = (_target.position - transform.position).normalized;
+            _moveDirection = direction;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (_target)
+        {
+            _rb.velocity = new Vector2(_moveDirection.x, _moveDirection.y) * _enemySpeed;
+        }
 
     }
 }
