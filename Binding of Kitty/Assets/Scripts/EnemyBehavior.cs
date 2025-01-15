@@ -8,6 +8,7 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] private int _enemyHealth;
     [SerializeField] private UIUpdater _UI;
     private Rigidbody2D _rb;
+    public GameHandler gameHandler;
 
 
     private void Awake()
@@ -22,6 +23,7 @@ public class EnemyBehavior : MonoBehaviour
     public void DecreaseHealth(int amount)
     {
         _enemyHealth -= amount;  // Reduce health by the specified amount
+        gameHandler.OnHealthChanged(GetHealth());
     }
 
     public int GetHealth()
