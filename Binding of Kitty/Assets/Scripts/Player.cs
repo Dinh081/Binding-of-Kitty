@@ -95,6 +95,9 @@ public class Player : MonoBehaviour
                 _UI.UpdateHealth(_health);
 
             }
+        else if (collision.gameObject.CompareTag("Door")) {
+            SceneManager.LoadScene("Level2");
+        }
     }
 
     private void OnDisable()

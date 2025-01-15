@@ -12,6 +12,7 @@ public class GameHandler : MonoBehaviour
 
     public UnityEvent levelUp;
     public SpriteRenderer spriteRenderer;
+    
 
 
     void Start()
@@ -48,7 +49,10 @@ public class GameHandler : MonoBehaviour
      
         spriteRenderer.sprite = openDoor;
     }
-
+     public void TroughWall(GameObject hiddenDoor)
+    {
+        Destroy(hiddenDoor);
+    }
 
 
 

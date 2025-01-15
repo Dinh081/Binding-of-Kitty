@@ -7,8 +7,8 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] private float _uptime = 3f;
     private Rigidbody2D _rb;
-   
-    public Rigidbody2D hiddenDoorBody;
+
+    [SerializeField] Rigidbody2D hiddenDoorBody;
 
     // Start is called before the first frame update
     void Start()
