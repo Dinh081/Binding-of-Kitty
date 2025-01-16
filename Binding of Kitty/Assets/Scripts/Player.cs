@@ -1,23 +1,21 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] InputActionReference _movementInput;
+    [SerializeField] private InputActionReference _movementInput;
     [SerializeField] private InputActionReference _shootInput;
     [SerializeField] private GameObject _projectilePrefab;
-    [SerializeField] private Transform _shootPoint; // Point where the projectile spawns
-    [SerializeField] private float _shootForce = 10f; // Force to apply to the projectile
-    private Vector2 _lastDirection = Vector2.left; // Default direction (facing left)
+    [SerializeField] private Transform _shootPoint;
+    [SerializeField] private float _shootForce = 10f;
+    private Vector2 _lastDirection = Vector2.left;
     private Vector2 _movement;
     private Rigidbody2D _rb;
     [SerializeField] private float _speed;
     [SerializeField] private int _health;
     [SerializeField] private UIUpdater _UI;
-
     private bool _isInvincible = false;
     private float _invincibilityDuration = 0.5f;
 
@@ -32,12 +30,12 @@ public class Player : MonoBehaviour
         _shootInput.action.Enable();
     }
 
-    void Start()
+    private void Start()
     {
         _UI.UpdateHealth(_health);
     }
 
-    void Update()
+    private void Update()
     {
         _movement = _movementInput.action.ReadValue<Vector2>();
 
@@ -46,13 +44,10 @@ public class Player : MonoBehaviour
             _lastDirection = _movement.normalized;
         }
 
-        // Shoot in the last direction when the shoot button is pressed
         if (_shootInput.action.triggered)
         {
             ShootProjectile(_lastDirection);
         }
-
-        _UI.UpdateHealth(_health);
     }
 
     private void FixedUpdate()
@@ -74,43 +69,38 @@ public class Player : MonoBehaviour
                     direction = _lastDirection;
                 }
 
-                projRb.velocity = direction.normalized * _shootForce; // Shoot in the last known direction
+                projRb.velocity = direction.normalized * _shootForce;
             }
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (_isInvincible) return; // Prevent taking damage if the player is invincible
-
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") && !_isInvincible)
         {
-            if (_health < 2)
+            _health--;
+            _UI.UpdateHealth(_health);
+
+            if (_health <= 0)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
             else
             {
-                _health--;
-                _UI.UpdateHealth(_health);
                 StartCoroutine(InvincibilityCoroutine());
             }
-<<<<<<< Updated upstream
-        else if (collision.gameObject.CompareTag("Door")) {
-            SceneManager.LoadScene("Level2");
         }
-=======
+        else if (collision.gameObject.CompareTag("Door"))
+        {
+            SceneManager.LoadScene("Level2");
         }
     }
 
     private IEnumerator InvincibilityCoroutine()
     {
         _isInvincible = true;
-
         yield return new WaitForSeconds(_invincibilityDuration);
-
         _isInvincible = false;
->>>>>>> Stashed changes
     }
 
     private void OnDisable()

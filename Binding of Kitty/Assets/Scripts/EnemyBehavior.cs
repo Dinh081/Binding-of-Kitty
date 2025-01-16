@@ -1,38 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using static UnityEngine.GraphicsBuffer;
 
 public class EnemyBehavior : MonoBehaviour
 {
     [SerializeField] private int _enemyHealth;
     [SerializeField] private UIUpdater _UI;
     private Rigidbody2D _rb;
-<<<<<<< Updated upstream
     public GameHandler gameHandler;
-=======
     private Transform _target;
     [SerializeField] private float _speed = 1f;
-    [SerializeField] private float _fleeDuration = 0.5f;  // Time the enemy moves away
+    private float _fleeDuration = 0.8f;  // Time the enemy moves away
     [SerializeField] private float _fleeSpeed = 2f;  // Speed at which the enemy moves away
->>>>>>> Stashed changes
 
     private bool _isFleeing = false;  // Flag to check if the enemy is currently fleeing
+
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
     }
-
+    // Start is called before the first frame update
     void Start()
     {
         _UI.UpdateEnemyHealth(GetHealth());
         _target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
-
     public void DecreaseHealth(int amount)
     {
         _enemyHealth -= amount;  // Reduce health by the specified amount
         gameHandler.OnHealthChanged(GetHealth());
+        _UI.UpdateEnemyHealth(GetHealth());
     }
 
     public int GetHealth()
@@ -40,8 +40,11 @@ public class EnemyBehavior : MonoBehaviour
         return _enemyHealth;  // Get the current health of the enemy
     }
 
+    // Update is called once per frame
+
     void Update()
     {
+
         // If the enemy is fleeing, move away from the player
         if (_isFleeing)
         {
@@ -59,7 +62,6 @@ public class EnemyBehavior : MonoBehaviour
 
         _UI.UpdateEnemyHealth(_enemyHealth);
     }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))

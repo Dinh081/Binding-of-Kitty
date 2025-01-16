@@ -464,7 +464,7 @@ MonoBehaviour:
   _projectilePrefab: {fileID: 5209170234177131635, guid: b98111eb518edc74a96c274994e3035b, type: 3}
   _shootPoint: {fileID: 480496674}
   _shootForce: 10
-  _speed: 4
+  _speed: 6
   _health: 6
   _UI: {fileID: 1797496531}
 --- !u!4 &480496674 stripped
@@ -1571,7 +1571,6 @@ GameObject:
   - component: {fileID: 1098629499}
   - component: {fileID: 1098629502}
   - component: {fileID: 1098629501}
-  - component: {fileID: 1098629500}
   m_Layer: 0
   m_Name: Enemy Health
   m_TagString: Untagged
@@ -1598,21 +1597,6 @@ RectTransform:
   m_AnchoredPosition: {x: 142, y: -63}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1098629500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1098629498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35b785eb85b21d249b3303b2bd56deaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemyHealth: 6
-  _UI: {fileID: 1797496531}
-  gameHandler: {fileID: 0}
 --- !u!114 &1098629501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2196,6 +2180,8 @@ MonoBehaviour:
   _enemyHealth: 11
   _UI: {fileID: 1797496531}
   gameHandler: {fileID: 1727017204}
+  _speed: 1
+  _fleeSpeed: 2
 --- !u!1 &1347805035
 GameObject:
   m_ObjectHideFlags: 0
