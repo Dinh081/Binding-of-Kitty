@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private InputActionReference _movementInput;
     [SerializeField] private InputActionReference _shootInput;
+    [SerializeField] private InputActionReference _menuControl;
     [SerializeField] private GameObject _projectilePrefab;
     [SerializeField] private Transform _shootPoint;
     [SerializeField] private float _shootForce = 10f;
@@ -19,6 +20,8 @@ public class Player : MonoBehaviour
     private bool _isInvincible = false;
     private float _invincibilityDuration = 0.5f;
 
+    [SerializeField] private GameObject _pauseMenu;
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -28,6 +31,7 @@ public class Player : MonoBehaviour
     {
         _movementInput.action.Enable();
         _shootInput.action.Enable();
+        _menuControl.action.Enable();
     }
 
     private void Start()
@@ -47,6 +51,12 @@ public class Player : MonoBehaviour
         if (_shootInput.action.triggered)
         {
             ShootProjectile(_lastDirection);
+        }
+
+        if (_menuControl.action.triggered)
+        {
+            Time.timeScale = 0f;
+            _pauseMenu.SetActive(true);
         }
     }
 
@@ -107,5 +117,6 @@ public class Player : MonoBehaviour
     {
         _movementInput.action.Disable();
         _shootInput.action.Disable();
+        _menuControl.action.Disable();
     }
 }

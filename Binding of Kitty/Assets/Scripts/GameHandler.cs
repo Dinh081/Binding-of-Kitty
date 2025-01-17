@@ -30,7 +30,7 @@ public class GameHandler : MonoBehaviour
     {
         if (newHealth == 0)
         {
-            levelUp.Invoke();
+            levelUp.Invoke();   
         }
     }
 
