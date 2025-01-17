@@ -19,8 +19,10 @@ public class Player : MonoBehaviour
     [SerializeField] private UIUpdater _UI;
     private bool _isInvincible = false;
     private float _invincibilityDuration = 0.5f;
+    public bool _gotPowerUp = false;
 
     [SerializeField] private GameObject _pauseMenu;
+    [SerializeField] private GameObject _powerUpMessage;
 
     private void Awake()
     {
@@ -91,6 +93,12 @@ public class Player : MonoBehaviour
             _health--;
             _UI.UpdateHealth(_health);
 
+            if (_gotPowerUp)  // after getting PowerUp enemy gets damage when he touches the player
+            {
+                EnemyBehavior enemy = collision.gameObject.GetComponent<EnemyBehavior>();
+                enemy.DecreaseHealth(1);
+            }
+
             if (_health <= 0)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -103,6 +111,13 @@ public class Player : MonoBehaviour
         else if (collision.gameObject.CompareTag("Door"))
         {
             SceneManager.LoadScene("Level2");
+        }
+        else if (collision.gameObject.CompareTag("PowerUp"))
+        {
+            _powerUpMessage.SetActive(true);
+            Destroy(collision.gameObject);
+            _gotPowerUp = true;
+
         }
     }
 

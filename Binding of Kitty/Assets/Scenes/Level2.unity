@@ -843,7 +843,9 @@ MonoBehaviour:
   _speed: 6
   _health: 6
   _UI: {fileID: 1797496531}
+  _gotPowerUp: 1
   _pauseMenu: {fileID: 1669726036}
+  _powerUpMessage: {fileID: 0}
 --- !u!4 &480496674 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6671316480759290078, guid: 93a6544922aa79a4cb1bc561dc9e2230, type: 3}
