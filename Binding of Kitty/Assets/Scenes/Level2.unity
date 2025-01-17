@@ -843,9 +843,8 @@ MonoBehaviour:
   _speed: 6
   _health: 6
   _UI: {fileID: 1797496531}
-  _gotPowerUp: 1
   _pauseMenu: {fileID: 1669726036}
-  _powerUpMessage: {fileID: 0}
+  _powerUpMessage: {fileID: 1126804697}
 --- !u!4 &480496674 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6671316480759290078, guid: 93a6544922aa79a4cb1bc561dc9e2230, type: 3}
@@ -2735,6 +2734,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1126804697
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1126804698}
+  m_Layer: 0
+  m_Name: PowerUpMessage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1126804698
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126804697}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -534.4947, y: -303.4749, z: -0.036505852}
+  m_LocalScale: {x: 1.529052, y: 1.529052, z: 1.529052}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1797496530}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1134300605
 GameObject:
   m_ObjectHideFlags: 0
@@ -4806,6 +4836,7 @@ RectTransform:
   - {fileID: 237254969}
   - {fileID: 740798685}
   - {fileID: 1669726037}
+  - {fileID: 1126804698}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

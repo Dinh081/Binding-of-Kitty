@@ -11,7 +11,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] Rigidbody2D hiddenDoorBody;
 
     public GameObject powerUp;
-    private bool _gotPowerUp = false;
+    private static bool _gotPowerUp = false;
     
     // Start is called before the first frame update
     void Start()

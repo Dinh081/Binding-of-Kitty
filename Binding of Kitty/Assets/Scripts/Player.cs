@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     [SerializeField] private UIUpdater _UI;
     private bool _isInvincible = false;
     private float _invincibilityDuration = 0.5f;
-    public bool _gotPowerUp = false;
+    public static bool _gotPowerUp = false;
 
     [SerializeField] private GameObject _pauseMenu;
     [SerializeField] private GameObject _powerUpMessage;
