@@ -10,7 +10,7 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] private UIUpdater _UI;
     private Rigidbody2D _rb;
     public GameHandler gameHandler;
-    private Transform _target;
+    public Transform _target;
     [SerializeField] private float _speed = 1f;
     private float _fleeDuration = 0.8f;  // Time the enemy moves away
     [SerializeField] private float _fleeSpeed = 2f;  // Speed at which the enemy moves away
@@ -26,7 +26,7 @@ public class EnemyBehavior : MonoBehaviour
     void Start()
     {
         _UI.UpdateEnemyHealth(GetHealth());
-        _target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        //_target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
     public void DecreaseHealth(int amount)
     {

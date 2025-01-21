@@ -167,13 +167,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 42553515}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3660378, g: 0, b: 0, a: 0.6313726}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.6313726}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2833,7 +2833,6 @@ MonoBehaviour:
   _speed: 4
   _health: 6
   _UI: {fileID: 772565487}
-  _gotPowerUp: 0
   _pauseMenu: {fileID: 2052455712}
   _powerUpMessage: {fileID: 853675893}
 --- !u!4 &1194808988 stripped
@@ -3585,8 +3584,8 @@ RectTransform:
   - {fileID: 401871482}
   m_Father: {fileID: 772565486}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.1, y: 0.8}
-  m_AnchorMax: {x: 0.5, y: 0.9}
+  m_AnchorMin: {x: 0.1, y: 0.9}
+  m_AnchorMax: {x: 0.5, y: 0.97}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3899,8 +3898,8 @@ RectTransform:
   - {fileID: 97814500}
   m_Father: {fileID: 772565486}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.55, y: 0.8}
-  m_AnchorMax: {x: 0.9, y: 0.9}
+  m_AnchorMin: {x: 0.55, y: 0.9}
+  m_AnchorMax: {x: 0.9, y: 0.97}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5547,6 +5546,7 @@ MonoBehaviour:
   _enemyHealth: 11
   _UI: {fileID: 772565487}
   gameHandler: {fileID: 1655052518}
+  _target: {fileID: 1194808988}
   _speed: 3
   _fleeSpeed: 2
 --- !u!1660057539 &9223372036854775807
