@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -19,7 +20,8 @@ public class Player : MonoBehaviour
     [SerializeField] private UIUpdater _UI;
     private bool _isInvincible = false;
     private float _invincibilityDuration = 0.5f;
-    public static bool _gotPowerUp = false;
+    private static bool _gotPowerUp = false;
+    private static bool _enemyDestroyed = false;
 
     [SerializeField] private GameObject _pauseMenu;
     [SerializeField] private GameObject _powerUpMessage;
@@ -92,7 +94,7 @@ public class Player : MonoBehaviour
         {
             _health--;
             _UI.UpdateHealth(_health);
-
+            
             if (_gotPowerUp)  // after getting PowerUp enemy gets damage when he touches the player
             {
                 EnemyBehavior enemy = collision.gameObject.GetComponent<EnemyBehavior>();
@@ -108,14 +110,17 @@ public class Player : MonoBehaviour
                 StartCoroutine(InvincibilityCoroutine());
             }
         }
-        else if (collision.gameObject.CompareTag("Door"))
+        else if (collision.gameObject.CompareTag("Door") && _enemyDestroyed is true) 
         {
-            SceneManager.LoadScene("Level2");
+            
+                SceneManager.LoadScene("Level2");
+                _enemyDestroyed = false;
         }
         else if (collision.gameObject.CompareTag("PowerUp"))
         {
             _powerUpMessage.SetActive(true);
             Destroy(collision.gameObject);
+            _enemyDestroyed = true;
             _gotPowerUp = true;
 
         }
