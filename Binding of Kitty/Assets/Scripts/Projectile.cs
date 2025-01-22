@@ -10,6 +10,9 @@ public class Projectile : MonoBehaviour
 
     [SerializeField] Rigidbody2D hiddenDoorBody;
 
+    public GameObject powerUp;
+    private static bool _gotPowerUp = false;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +39,11 @@ public class Projectile : MonoBehaviour
                 if (enemy.GetHealth() <= 0)
                 {
                     Destroy(collision.gameObject);
+                    if (_gotPowerUp is false) {
+                        Instantiate(powerUp, enemy.transform.position, Quaternion.identity); // spawns the power up on the place of enemy without rotation
+                        _gotPowerUp = true;
+                    }
+                        
                     Destroy(hiddenDoorBody);
     
                 }

@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Projectile
   - Door
+  - PowerUp
   layers:
   - Default
   - TransparentFX
