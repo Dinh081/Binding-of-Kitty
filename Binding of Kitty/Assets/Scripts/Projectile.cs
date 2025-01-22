@@ -11,7 +11,6 @@ public class Projectile : MonoBehaviour
     [SerializeField] Rigidbody2D hiddenDoorBody;
 
     public GameObject powerUp;
-    private static bool _gotPowerUp = false;
     
     // Start is called before the first frame update
     void Start()
@@ -34,14 +33,13 @@ public class Projectile : MonoBehaviour
             if (enemy != null)
             {
                 enemy.DecreaseHealth(1);  // Decrease health by 1 (adjust as needed)
-
+                
                 // --Destroy the enemy if health reaches 0-- instead load scene again <hier ColliderBox ausschalten, damit man in den neuen Raum kann (angenommen es gibt nur einen Gegner pro Raum)>
                 if (enemy.GetHealth() <= 0)
                 {
                     Destroy(collision.gameObject);
-                    if (_gotPowerUp is false) {
+                    if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Level1") ) {
                         Instantiate(powerUp, enemy.transform.position, Quaternion.identity); // spawns the power up on the place of enemy without rotation
-                        _gotPowerUp = true;
                     }
                         
                     Destroy(hiddenDoorBody);

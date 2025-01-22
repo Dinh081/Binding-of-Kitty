@@ -26,7 +26,6 @@ public class EnemyBehavior : MonoBehaviour
     void Start()
     {
         _UI.UpdateEnemyHealth(GetHealth());
-        //_target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
     public void DecreaseHealth(int amount)
     {

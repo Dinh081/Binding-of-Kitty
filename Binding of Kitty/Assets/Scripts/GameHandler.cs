@@ -12,6 +12,7 @@ public class GameHandler : MonoBehaviour
 
     public UnityEvent levelUp;
     public SpriteRenderer spriteRenderer;
+    public UnityEvent backToMenu;
     
 
 
